@@ -1,13 +1,16 @@
 import React from 'react';
-import { Container, Card, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Header from './Header';
+import Footer from '../components/Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <main className='d-flex flex-column min-vh-100'>
       <Header />
       <Container>{children}</Container>
-    </div>
+      <br />
+      <Footer className='mt-auto' />
+    </main>
   );
 };
 

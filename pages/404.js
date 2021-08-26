@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Error404 = () => {
   return (
@@ -12,7 +13,7 @@ const Error404 = () => {
       </h1>
       <div className='inline-block align-middle'>
         <h2 className='font-weight-normal lead' id='desc'>
-          The page you requested was not found.
+          The page you requested was not found.Go to <Link href='/'>Home</Link>
         </h2>
       </div>
     </div>

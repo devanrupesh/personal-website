@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar, NavDropdown, Container, Nav } from 'react-bootstrap';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const Header = () => {
@@ -8,7 +7,7 @@ const Header = () => {
   return (
     <Navbar bg='light' expand='lg' className='mb-3'>
       <Container fluid className='m-auto'>
-        <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href='#home'>DASHBOARD</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
@@ -40,9 +39,9 @@ const Header = () => {
             </NavDropdown>
             <NavDropdown title='Group Members' id='basic-nav-dropdown'>
               <NavDropdown.Item
-                onClick={() => router.push('/group-members/allumni')}
+                onClick={() => router.push('/group-members/alumni')}
               >
-                Allumni
+                Alumni
               </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() => router.push('/group-members/collaborators')}
