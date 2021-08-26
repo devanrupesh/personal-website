@@ -1,5 +1,5 @@
 import React from 'react';
-import Gallery from '../components/Gallery';
+import CustomGallery from '../components/Gallery';
 
 const IMAGES = [
   {
@@ -52,8 +52,8 @@ const IMAGES = [
   },
 ];
 
-const gallery = () => {
-  return <Gallery images={IMAGES} />;
+const Gallery = () => {
+  return <CustomGallery images={IMAGES} />;
 };
 
-export default gallery;
+export default Gallery;

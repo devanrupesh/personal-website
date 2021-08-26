@@ -1,7 +1,7 @@
 import React from 'react';
 
-const researchInterest = () => {
+const ResearchInterest = () => {
   return <div>Research Interests</div>;
 };
 
-export default researchInterest;
+export default ResearchInterest;

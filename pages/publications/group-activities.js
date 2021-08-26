@@ -1,7 +1,7 @@
 import React from 'react';
 
-const groupActivities = () => {
+const GroupActivities = () => {
   return <div>groupActivities</div>;
 };
 
-export default groupActivities;
+export default GroupActivities;

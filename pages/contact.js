@@ -3,9 +3,8 @@ import { Button, Form, Alert } from 'react-bootstrap';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
 import Spinner from '../components/Spinner';
-import { createClient } from 'contentful-management';
 
-const contact = () => {
+const Contact = () => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [showAlert, setShowAlert] = useState({
     show: false,
@@ -23,55 +22,6 @@ const contact = () => {
   const handleFormSubmission = (e) => {
     e.preventDefault();
     setShowSpinner(true);
-
-    // const client = createClient({
-    //   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANGEMENT_API_KEY,
-    // });
-
-    // client
-    //   .getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID)
-    //   .then((space) =>
-    //     space.getEnvironment(process.env.NEXT_PUBLIC_ENVIRONMENT_ID)
-    //   )
-    //   .then((environment) =>
-    //     environment.createEntry('userMessages', {
-    //       fields: {
-    //         name: {
-    //           'en-US': formValue.name,
-    //         },
-    //         email: {
-    //           'en-US': formValue.email,
-    //         },
-    //         address: {
-    //           'en-US': formValue.address,
-    //         },
-    //         subject: {
-    //           'en-US': formValue.subject,
-    //         },
-    //         message: {
-    //           'en-US': formValue.message,
-    //         },
-    //       },
-    //     })
-    //   )
-    //   .then((entry) => {
-    //     setShowSpinner(false);
-    //     setShowAlert({
-    //       show: true,
-    //       message: 'Your response has been recorded',
-    //     });
-    //     console.log(entry);
-    //   })
-    //   .catch((error) => {
-    //     setShowSpinner(false);
-    //     setShowAlert({
-    //       show: true,
-    //       message: 'Something went wrong! Please try again later',
-    //       variant: 'danger',
-    //     });
-    //     console.error(error);
-    //   });
-
     fetch('/api/contact', {
       method: 'POST',
       headers: {
@@ -189,4 +139,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;

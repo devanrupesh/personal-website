@@ -1,7 +1,7 @@
 import React from 'react';
 
-const currentMembers = () => {
+const CurrentMembers = () => {
   return <div>currentMembers</div>;
 };
 
-export default currentMembers;
+export default CurrentMembers;

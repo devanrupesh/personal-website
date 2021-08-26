@@ -66,7 +66,7 @@ const IMAGES = [
   },
 ];
 
-const facilities = ({ facilitiesContent = IMAGES }) => {
+const Facilities = ({ facilitiesContent = IMAGES }) => {
   const transformedCards = facilitiesContent.map((content) => ({
     id: content.sys.id,
     title: content.fields.cardTitle,
@@ -106,4 +106,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default facilities;
+export default Facilities;

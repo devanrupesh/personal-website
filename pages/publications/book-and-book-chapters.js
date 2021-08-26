@@ -1,7 +1,7 @@
 import React from 'react';
 
-const bookAndBookChapters = () => {
+const BookAndBookChapters = () => {
   return <div>bookAndBookChapters</div>;
 };
 
-export default bookAndBookChapters;
+export default BookAndBookChapters;

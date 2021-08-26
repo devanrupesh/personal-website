@@ -1,7 +1,7 @@
 import React from 'react';
 
-const latestResearch = () => {
+const LatestResearch = () => {
   return <div>latestResearch</div>;
 };
 
-export default latestResearch;
+export default LatestResearch;

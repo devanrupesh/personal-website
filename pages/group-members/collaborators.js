@@ -1,7 +1,7 @@
 import React from 'react';
 
-const collaborators = () => {
+const Collaborators = () => {
   return <div>collaborators</div>;
 };
 
-export default collaborators;
+export default Collaborators;

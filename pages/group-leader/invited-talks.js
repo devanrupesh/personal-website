@@ -1,7 +1,7 @@
 import React from 'react';
 
-const invitedTalks = () => {
+const InvitedTalks = () => {
   return <div>Invited-talks</div>;
 };
 
-export default invitedTalks;
+export default InvitedTalks;

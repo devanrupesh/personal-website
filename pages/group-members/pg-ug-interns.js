@@ -1,7 +1,7 @@
 import React from 'react';
 
-const pgUgInterns = () => {
+const PgUgInterns = () => {
   return <div>pgUgInterns</div>;
 };
 
-export default pgUgInterns;
+export default PgUgInterns;

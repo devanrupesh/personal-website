@@ -1,7 +1,7 @@
 import React from 'react';
 
-const vacancy = () => {
+const Vacancy = () => {
   return <div>vacancy</div>;
 };
 
-export default vacancy;
+export default Vacancy;

@@ -13,7 +13,13 @@ const Card = ({ content }) => {
     //   </BootstrapCard.Body>
     // </BootstrapCard>
     <BootstrapCard>
-      <Image src={content.url} height='300' width='300' objectFit='cover' />
+      <Image
+        src={content.url}
+        alt={content.url}
+        height='300'
+        width='300'
+        objectFit='cover'
+      />
       <BootstrapCard.Body>
         <BootstrapCard.Title>{content.title}</BootstrapCard.Title>
         <BootstrapCard.Text>{content.description}</BootstrapCard.Text>
