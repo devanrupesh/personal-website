@@ -4,7 +4,6 @@ import Seo from '../components/Seo';
 import { generateClient } from '../lib/contentfulClient';
 
 export default function Gallery({ galleryContent = [] }) {
-  console.log(galleryContent);
   const formatedImages = galleryContent.map((content) => ({
     id: content.sys.id,
     src: `https:${content.fields.image.fields.file.url}`,
