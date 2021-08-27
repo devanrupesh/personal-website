@@ -96,57 +96,25 @@ export default function Contact({ pageContent = [] }) {
       <h4>Contact</h4>
       <br />
       <div>
-        <Form name='contact' method='POST' data-netlify='true'>
+        <form name='contact' method='POST' data-netlify='true'>
           <input type='hidden' name='form-name' value='contact' />
-
-          <Input
-            id='name-input'
-            label='name'
-            placeholder='Please enter your name'
-            type='text'
-            name='name'
-            onChange={handleInputChange}
-          />
-          <Input
-            id='email-input'
-            label='email'
-            placeholder='Please enter your email'
-            type='email'
-            name='email'
-            onChange={handleInputChange}
-          />
-
-          <Input
-            id='address-input'
-            label='address'
-            placeholder='Please enter your address'
-            type='text'
-            name='address'
-            onChange={handleInputChange}
-          />
-
-          <Input
-            id='subject-input'
-            label='subject'
-            placeholder='Please enter subject'
-            type='text'
-            name='subject'
-            onChange={handleInputChange}
-          />
-
-          <TextArea
-            id='message-input'
-            label='message'
-            name='message'
-            onChange={handleInputChange}
-          />
-          <div className='d-flex justify-content-left align-items-center'>
-            <Button variant='primary' type='submit' className='me-3'>
-              SEND
-            </Button>
-            {showSpinner && <Spinner />}
-          </div>
-        </Form>
+          <p>
+            <input type='text' name='firstname' id='firstname' />
+            <label htmlFor='yourname'>Your Name:</label> <br />
+            <input type='text' name='name' id='yourname' />
+          </p>
+          <p>
+            <label htmlFor='youremail'>Your Email:</label> <br />
+            <input type='email' name='email' id='youremail' />
+          </p>
+          <p>
+            <label htmlFor='yourmessage'>Message:</label> <br />
+            <textarea name='message' id='yourmessage'></textarea>
+          </p>
+          <p>
+            <button type='submit'>Send</button>
+          </p>
+        </form>
       </div>
     </>
   );
