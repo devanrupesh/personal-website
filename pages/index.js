@@ -3,9 +3,11 @@ import { generateClient } from '../lib/contentfulClient';
 import { transformedImagesForCarousel } from '../lib/utils';
 import Content from '../components/Content';
 import Seo from '../components/Seo';
-import { Image } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 
 export default function Home({ pageContent = [], featureImagesContent = {} }) {
+  const router = useRouter();
   const transformedImages = transformedImagesForCarousel(featureImagesContent);
 
   return (
@@ -22,7 +24,7 @@ export default function Home({ pageContent = [], featureImagesContent = {} }) {
           className='card border-dark mb-3 d-flex flex-column justify-content-center text-center w-120 h-50'
           // style={{ maxWidth: '18rem' }}
         >
-          <div class='card-header'>
+          <div className='card-header'>
             <Image
               src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=976&q=80'
               roundedCircle
@@ -35,6 +37,9 @@ export default function Home({ pageContent = [], featureImagesContent = {} }) {
             <h6 className='card-title'>Nano Architectures Research Group</h6>
             <hr />
             <p className='card-text'>Indian Institue of Technology Indore</p>
+            <Button onClick={() => router.push('/group-leader/profile')}>
+              view profile
+            </Button>
           </div>
         </div>
       </div>
