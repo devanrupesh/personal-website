@@ -2,9 +2,15 @@ import React from 'react';
 import { Carousel as BootstrapCarousel } from 'react-bootstrap';
 import Image from 'next/image';
 
-const Carousel = ({ images = [], description }) => {
+const Carousel = ({
+  images = [],
+  description,
+  className,
+  imgWidth,
+  imgHeight,
+}) => {
   return (
-    <>
+    <div className={`d-flex flex-column justify-content-between ${className}`}>
       <BootstrapCarousel fade>
         {images &&
           images.map((image) => (
@@ -15,8 +21,8 @@ const Carousel = ({ images = [], description }) => {
               <Image
                 src={image.url}
                 alt={image.url}
-                height='500'
-                width='800'
+                height={imgHeight}
+                width={imgWidth}
                 objectFit='contain'
               />
               <BootstrapCarousel.Caption>
@@ -31,7 +37,7 @@ const Carousel = ({ images = [], description }) => {
       <div className='text-center'>
         <p>{description}</p>
       </div>
-    </>
+    </div>
   );
 };
 

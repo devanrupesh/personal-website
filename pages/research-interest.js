@@ -16,6 +16,8 @@ export default function ResearchInterest({
       <Carousel
         images={transformedImages}
         description={featureImagesContent.fields.description}
+        imgWidth='800'
+        imgHeight='500'
       />
       {pageContent.map((content) => (
         <Content key={content.sys.id} content={content} />
