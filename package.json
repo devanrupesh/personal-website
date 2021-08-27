@@ -11,9 +11,9 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.2.0",
     "@react-aria/ssr": "^3.0.3",
+    "@sendgrid/mail": "^7.4.6",
     "bootstrap": "5.1.0",
     "contentful": "^8.5.0",
-    "contentful-management": "^7.33.0",
     "dotenv": "^10.0.0",
     "next": "11.1.0",
     "nodemailer": "^6.6.3",
