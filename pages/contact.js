@@ -93,8 +93,15 @@ export default function Contact({ pageContent = [] }) {
         <Content key={content.sys.id} content={content} />
       ))}
       <br />
+      <h4>Contact</h4>
+      <br />
       <div>
-        <Form onSubmit={handleFormSubmission}>
+        <Form
+          name='contact'
+          method='POST'
+          data-netlify='true'
+          action='/success'
+        >
           <Input
             id='name-input'
             label='name'
@@ -138,15 +145,11 @@ export default function Contact({ pageContent = [] }) {
           />
           <div className='d-flex justify-content-left align-items-center'>
             <Button variant='primary' type='submit' className='me-3'>
-              Submit
+              SEND
             </Button>
             {showSpinner && <Spinner />}
           </div>
         </Form>
-        <br />
-        {showAlert.show && (
-          <Alert variant={showAlert.variant}>{showAlert.message}</Alert>
-        )}
       </div>
     </>
   );
