@@ -96,12 +96,7 @@ export default function Contact({ pageContent = [] }) {
       <h4>Contact</h4>
       <br />
       <div>
-        <Form
-          name='contact'
-          method='POST'
-          data-netlify='true'
-          action='/success'
-        >
+        <Form name='contact' method='POST' data-netlify='true'>
           <Input
             id='name-input'
             label='name'
