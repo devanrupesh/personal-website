@@ -99,6 +99,7 @@ export default function Contact({ pageContent = [] }) {
         name='contact-form'
         method='POST'
         encType='application/x-www-form-urlencoded'
+        netlify
       >
         <input type='hidden' name='form-name' value='contact-form' />
         <div className='field half first'>
