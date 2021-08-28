@@ -96,7 +96,7 @@ export default function Contact({ pageContent = [] }) {
       <h4>Contact</h4>
       <br />
       <div>
-        <Form name='contact' method='POST' data-netlify='true'>
+        <Form name='contact' method='POST' data-netlify='true' hidden>
           <input type='hidden' name='form-name' value='contact' />
 
           <Input
