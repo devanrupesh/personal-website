@@ -98,28 +98,28 @@ export default function Contact({ pageContent = [] }) {
       <form
         name='contact-form'
         method='POST'
-        enctype='application/x-www-form-urlencoded'
+        encType='application/x-www-form-urlencoded'
       >
         <input type='hidden' name='form-name' value='contact-form' />
-        <div class='field half first'>
-          <label for='name'>Nombre</label>
+        <div className='field half first'>
+          <label htmlFor='name'>Nombre</label>
           <input type='text' name='name' id='name' />
         </div>
-        <div class='field half'>
-          <label for='email'>Email</label>
+        <div className='field half'>
+          <label htmlFor='email'>Email</label>
           <input type='email' name='email' id='email' />
         </div>
-        <div class='field'>
-          <label for='message'>Mensaje</label>
+        <div className='field'>
+          <label htmlFor='message'>Mensaje</label>
           <textarea name='message' id='message' rows='6'></textarea>
         </div>
-        <div class='field form-terms'>
-          <label for='terms'>Condiciones del formulario</label>
+        <div className='field form-terms'>
+          <label htmlFor='terms'>Condiciones del formulario</label>
           <input type='checkbox' name='terms' id='terms' />
         </div>
-        <ul class='actions'>
+        <ul className='actions'>
           <li>
-            <input type='submit' class='special' value='Enviar' />
+            <input type='submit' className='special' value='Enviar' />
           </li>
           <li>
             <input type='reset' value='Borrar' />
