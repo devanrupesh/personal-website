@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import Seo from '../components/Seo';
 import Content from '../components/Content';
 import { generateClient } from '../lib/contentfulClient';
+import emailjs from 'emailjs-com';
 
 export default function Contact({ pageContent = [] }) {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -24,42 +25,57 @@ export default function Contact({ pageContent = [] }) {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
+
     setShowSpinner(true);
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formValue),
-    })
-      .then((res) => {
-        console.log('Response received');
-        if (res.status === 200) {
+    const html = `<div>${formValue.message}</div><br /><p>Sent from:
+    ${formValue.email}</p><br /><span>Name: ${
+      formValue.name
+    }</span><br /><p>Address:${
+      formValue.address ? formValue.address : 'null'
+    }</p>`;
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
+        e.target,
+        process.env.NEXT_PUBLIC_EMAIL_JS_USER_ID
+      )
+      .then(
+        (result) => {
           setShowSpinner(false);
+          console.log(result.text);
           setShowAlert({
             show: true,
-            message: 'Your response has been recorded',
+            message:
+              'Your response has been recorded! The owner will contact you',
+            variant: 'success',
           });
-          console.log('Response succeeded!');
           setFormValue({
-            address: '',
-            email: '',
             name: '',
-            message: '',
+            email: '',
+            address: '',
             subject: '',
+            message: '',
+          });
+        },
+        (error) => {
+          setShowSpinner(false);
+          console.log(error.text);
+          setShowAlert({
+            show: true,
+            message: 'something went wrong!',
+            variant: 'danger',
+          });
+          setFormValue({
+            name: '',
+            email: '',
+            address: '',
+            subject: '',
+            message: '',
           });
         }
-      })
-      .catch((err) => {
-        console.error(err);
-        setShowSpinner(false);
-        setShowAlert({
-          show: true,
-          message: 'something went wrong',
-          variant: 'danger',
-        });
-      });
+      );
   };
 
   const handleInputChange = (e) => {
@@ -95,38 +111,68 @@ export default function Contact({ pageContent = [] }) {
       <br />
       <h4>Contact</h4>
       <br />
-      <form
-        name='contact-form'
-        method='POST'
-        encType='application/x-www-form-urlencoded'
-        netlify
-      >
-        <input type='hidden' name='form-name' value='contact-form' />
-        <div className='field half first'>
-          <label htmlFor='name'>Nombre</label>
-          <input type='text' name='name' id='name' />
-        </div>
-        <div className='field half'>
-          <label htmlFor='email'>Email</label>
-          <input type='email' name='email' id='email' />
-        </div>
-        <div className='field'>
-          <label htmlFor='message'>Mensaje</label>
-          <textarea name='message' id='message' rows='6'></textarea>
-        </div>
-        <div className='field form-terms'>
-          <label htmlFor='terms'>Condiciones del formulario</label>
-          <input type='checkbox' name='terms' id='terms' />
-        </div>
-        <ul className='actions'>
-          <li>
-            <input type='submit' className='special' value='Enviar' />
-          </li>
-          <li>
-            <input type='reset' value='Borrar' />
-          </li>
-        </ul>
-      </form>
+      <div>
+        <Form
+          name='contact'
+          method='POST'
+          data-netlify='true'
+          onSubmit={handleFormSubmission}
+        >
+          <input type='hidden' name='form-name' value='contact' />
+
+          <Input
+            id='name-input'
+            label='name'
+            placeholder='Please enter your name'
+            type='text'
+            name='name'
+            onChange={handleInputChange}
+          />
+          <Input
+            id='email-input'
+            label='email'
+            placeholder='Please enter your email'
+            type='email'
+            name='email'
+            onChange={handleInputChange}
+          />
+
+          <Input
+            id='address-input'
+            label='address'
+            placeholder='Please enter your address'
+            type='text'
+            name='address'
+            onChange={handleInputChange}
+          />
+
+          <Input
+            id='subject-input'
+            label='subject'
+            placeholder='Please enter subject'
+            type='text'
+            name='subject'
+            onChange={handleInputChange}
+          />
+
+          <TextArea
+            id='message-input'
+            label='message'
+            name='message'
+            onChange={handleInputChange}
+          />
+          <div className='d-flex justify-content-left align-items-center'>
+            <Button variant='primary' type='submit' className='me-3'>
+              SEND
+            </Button>
+            {showSpinner && <Spinner />}
+          </div>
+        </Form>
+        <br />
+        {showAlert.show && (
+          <Alert variant={showAlert.variant}>{showAlert.message}</Alert>
+        )}
+      </div>
     </>
   );
 }
