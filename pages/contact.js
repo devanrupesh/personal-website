@@ -27,12 +27,6 @@ export default function Contact({ pageContent = [] }) {
     e.preventDefault();
 
     setShowSpinner(true);
-    const html = `<div>${formValue.message}</div><br /><p>Sent from:
-    ${formValue.email}</p><br /><span>Name: ${
-      formValue.name
-    }</span><br /><p>Address:${
-      formValue.address ? formValue.address : 'null'
-    }</p>`;
 
     emailjs
       .sendForm(
@@ -179,7 +173,7 @@ export default function Contact({ pageContent = [] }) {
 
 export const getStaticProps = async () => {
   const client = generateClient();
-  const entries = await client.getEntries({ content_type: 'vacancy' });
+  const entries = await client.getEntries({ content_type: 'contact' });
 
   return {
     props: {
