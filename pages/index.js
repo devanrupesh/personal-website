@@ -28,8 +28,8 @@ export default function Home({ pageContent = [], featureImagesContent = {} }) {
             <Image
               src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=976&q=80'
               roundedCircle
-              height='100'
-              width='100'
+              height='200'
+              width='200'
             />
           </div>
           <div className='card-body text-dark'>

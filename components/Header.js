@@ -11,8 +11,8 @@ const Header = () => {
           <Image
             src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=976&q=80'
             roundedCircle
-            height='50'
-            width='50'
+            height='80'
+            width='80'
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -46,19 +46,20 @@ const Header = () => {
             </NavDropdown>
             <NavDropdown title='Group Members' id='basic-nav-dropdown'>
               <NavDropdown.Item
-                onClick={() => router.push('/group-members/alumni')}
+                onClick={() => router.push('/group-members/current-members')}
               >
-                Alumni
+                Current Members
               </NavDropdown.Item>
+
               <NavDropdown.Item
                 onClick={() => router.push('/group-members/collaborators')}
               >
                 Collaborators
               </NavDropdown.Item>
               <NavDropdown.Item
-                onClick={() => router.push('/group-members/current-members')}
+                onClick={() => router.push('/group-members/alumni')}
               >
-                Current Members
+                Alumni
               </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() => router.push('/group-members/pg-ug-interns')}
@@ -67,6 +68,16 @@ const Header = () => {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title='Publications' id='basic-nav-dropdown'>
+              <NavDropdown.Item
+                onClick={() => router.push('/publications/latest-research')}
+              >
+                Latest Research
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => router.push('/publications/journals')}
+              >
+                Journals
+              </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() =>
                   router.push('/publications/book-and-book-chapters')
@@ -78,16 +89,6 @@ const Header = () => {
                 onClick={() => router.push('/publications/group-activities')}
               >
                 Group Activities
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                onClick={() => router.push('/publications/journals')}
-              >
-                Journals
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                onClick={() => router.push('/publications/latest-research')}
-              >
-                Latest Research
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link onClick={() => router.push('/vacancy')}>Vacancy</Nav.Link>
