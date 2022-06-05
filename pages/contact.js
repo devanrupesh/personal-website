@@ -26,50 +26,51 @@ export default function Contact({ pageContent = [] }) {
   const handleFormSubmission = (e) => {
     e.preventDefault();
 
-    setShowSpinner(true);
+    // setShowSpinner(true);
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
-        e.target,
-        process.env.NEXT_PUBLIC_EMAIL_JS_USER_ID
-      )
-      .then(
-        (result) => {
-          setShowSpinner(false);
-          console.log(result.text);
-          setShowAlert({
-            show: true,
-            message:
-              'Your response has been recorded! The owner will contact you',
-            variant: 'success',
-          });
-          setFormValue({
-            name: '',
-            email: '',
-            address: '',
-            subject: '',
-            message: '',
-          });
-        },
-        (error) => {
-          setShowSpinner(false);
-          console.log(error.text);
-          setShowAlert({
-            show: true,
-            message: 'something went wrong!',
-            variant: 'danger',
-          });
-          setFormValue({
-            name: '',
-            email: '',
-            address: '',
-            subject: '',
-            message: '',
-          });
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+    //     process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
+    //     e.target,
+    //     process.env.NEXT_PUBLIC_EMAIL_JS_USER_ID
+    //   )
+    //   .then(
+    //     (result) => {
+    //       setShowSpinner(false);
+    //       console.log(result.text);
+    //       setShowAlert({
+    //         show: true,
+    //         message:
+    //           'Your response has been recorded! The owner will contact you',
+    //         variant: 'success',
+    //       });
+    //       setFormValue({
+    //         name: '',
+    //         email: '',
+    //         address: '',
+    //         subject: '',
+    //         message: '',
+    //       });
+    //     },
+    //     (error) => {
+    //       setShowSpinner(false);
+    //       console.log(error.text);
+    //       setShowAlert({
+    //         show: true,
+    //         message: 'something went wrong!',
+    //         variant: 'danger',
+    //       });
+    //       setFormValue({
+    //         name: '',
+    //         email: '',
+    //         address: '',
+    //         subject: '',
+    //         message: '',
+    //       });
+    //     }
+    //   )
+    //   .catch((err) => console.error(err));
   };
 
   const handleInputChange = (e) => {
@@ -121,6 +122,7 @@ export default function Contact({ pageContent = [] }) {
             type='text'
             name='name'
             onChange={handleInputChange}
+            required={true}
           />
           <Input
             id='email-input'
@@ -129,6 +131,7 @@ export default function Contact({ pageContent = [] }) {
             type='email'
             name='email'
             onChange={handleInputChange}
+            required={true}
           />
 
           <Input
@@ -138,6 +141,7 @@ export default function Contact({ pageContent = [] }) {
             type='text'
             name='address'
             onChange={handleInputChange}
+            required={true}
           />
 
           <Input
@@ -147,12 +151,14 @@ export default function Contact({ pageContent = [] }) {
             type='text'
             name='subject'
             onChange={handleInputChange}
+            required={true}
           />
 
           <TextArea
             id='message-input'
             label='message'
             name='message'
+            required={true}
             onChange={handleInputChange}
           />
           <div className='d-flex justify-content-left align-items-center'>
