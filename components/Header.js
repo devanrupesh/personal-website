@@ -50,16 +50,16 @@ const Header = () => {
               >
                 Current Members
               </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => router.push('/group-members/alumni')}
+              >
+                Alumni
+              </NavDropdown.Item>
 
               <NavDropdown.Item
                 onClick={() => router.push('/group-members/collaborators')}
               >
                 Collaborators
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                onClick={() => router.push('/group-members/alumni')}
-              >
-                Alumni
               </NavDropdown.Item>
               <NavDropdown.Item
                 onClick={() => router.push('/group-members/pg-ug-interns')}
