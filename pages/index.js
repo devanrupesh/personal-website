@@ -1,14 +1,20 @@
 import Carousel from '../components/Carousel';
 import { generateClient } from '../lib/contentfulClient';
 import { transformedImagesForCarousel } from '../lib/utils';
+import { transformedImagesForCarousel as transformedImagesForHome } from '../lib/utils';
 import Content from '../components/Content';
 import Seo from '../components/Seo';
 import { Image, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 
-export default function Home({ pageContent = [], featureImagesContent = {} }) {
+export default function Home({
+  pageContent = [],
+  featureImagesContent = {},
+  profileImageContent,
+}) {
   const router = useRouter();
   const transformedImages = transformedImagesForCarousel(featureImagesContent);
+  const profile = transformedImagesForHome(profileImageContent)[0];
 
   return (
     <>
@@ -25,12 +31,7 @@ export default function Home({ pageContent = [], featureImagesContent = {} }) {
           // style={{ maxWidth: '18rem' }}
         >
           <div className='card-header'>
-            <Image
-              src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=976&q=80'
-              roundedCircle
-              height='200'
-              width='200'
-            />
+            <Image src={profile.url} roundedCircle height='180' width='180' />
           </div>
           <div className='card-body text-dark'>
             <h5 className='card-title'>Dr. Rupesh S. Devan</h5>
@@ -55,11 +56,13 @@ export const getStaticProps = async () => {
   const client = generateClient();
   const entries = await client.getEntries({ content_type: 'home' });
   const featureImagesEntry = await client.getEntry('2biFVyGWXKtSn3lLg8ZXxZ');
+  const profileImageContent = await client.getEntry('6GNjPYdFHFQwlHixje7kbo');
 
   return {
     props: {
       pageContent: entries.items,
       featureImagesContent: featureImagesEntry,
+      profileImageContent,
     },
     revalidate: 1,
   };

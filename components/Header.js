@@ -1,6 +1,8 @@
 import React from 'react';
-import { Navbar, NavDropdown, Container, Nav, Image } from 'react-bootstrap';
+import { Navbar, NavDropdown, Container, Nav } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import image from '../assets/iiti-logo.png';
 
 const Header = () => {
   const router = useRouter();
@@ -8,12 +10,7 @@ const Header = () => {
     <Navbar bg='light' expand='lg' className='mb-3'>
       <Container fluid className='m-auto'>
         <Navbar.Brand href='#home'>
-          <Image
-            src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=976&q=80'
-            roundedCircle
-            height='80'
-            width='80'
-          />
+          <Image src={image} alt='me' width='80' height='80' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>

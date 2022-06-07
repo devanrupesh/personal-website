@@ -38,7 +38,7 @@ export default function Contact({ pageContent = [] }) {
       .then(
         (result) => {
           setShowSpinner(false);
-          console.log(result.text);
+          // console.log(result.text);
           setShowAlert({
             show: true,
             message:
@@ -141,7 +141,7 @@ export default function Contact({ pageContent = [] }) {
             type='text'
             name='address'
             onChange={handleInputChange}
-            required={true}
+            // required={true}
           />
 
           <Input

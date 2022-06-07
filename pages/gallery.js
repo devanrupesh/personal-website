@@ -28,8 +28,6 @@ export const getStaticProps = async () => {
     content_type: 'gallery',
   });
 
-  console.log(entries);
-
   return {
     props: {
       galleryContent: entries.items,
