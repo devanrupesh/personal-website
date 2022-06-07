@@ -26,7 +26,7 @@ export default function CurrentMembers({ content = [] }) {
         {Object.keys(dict) &&
           Object.keys(dict).map((k) => {
             return (
-              <Container className='my-3'>
+              <Container key={k} className='my-3'>
                 <h4>{k}</h4>
                 <hr />
                 <Row xs={1} md={2} lg={3} className='g-4'>

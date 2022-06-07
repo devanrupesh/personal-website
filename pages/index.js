@@ -31,7 +31,13 @@ export default function Home({
           // style={{ maxWidth: '18rem' }}
         >
           <div className='card-header'>
-            <Image src={profile.url} roundedCircle height='180' width='180' />
+            <Image
+              src={profile.url}
+              alt='profile image'
+              roundedCircle
+              height='180'
+              width='180'
+            />
           </div>
           <div className='card-body text-dark'>
             <h5 className='card-title'>Dr. Rupesh S. Devan</h5>
