@@ -61,6 +61,7 @@ const renderOptions = {
           href={`https:${node.data.target.fields.file.url}`}
           download
           target='_blank'
+          rel='noreferrer'
         >
           {node.data.target.fields.title}
         </a>
@@ -69,8 +70,11 @@ const renderOptions = {
   },
 };
 
-export default function BlogPost(props) {
+// eslint-disable-next-line react/display-name
+const Richtext = (props) => {
   const { text } = props;
 
   return <>{documentToReactComponents(text, renderOptions)}</>;
-}
+};
+
+export default Richtext;
