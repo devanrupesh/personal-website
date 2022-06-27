@@ -3,10 +3,10 @@ import Card from '../components/Card';
 import { Row, Col } from 'react-bootstrap';
 import Seo from '../components/Seo';
 import { generateClient } from '../lib/contentfulClient';
-import { transformedImagesForCards } from '../lib/utils';
+import { transformedContent } from '../lib/utils';
 
 export default function Facilities({ content = [] }) {
-  const transformedContent = transformedImagesForCards(content);
+  content = transformedContent(content);
 
   return (
     <>
@@ -16,8 +16,8 @@ export default function Facilities({ content = [] }) {
       />
       <div>
         <Row xs={1} md={2} lg={3} className='g-4'>
-          {transformedContent &&
-            transformedContent.map((content) => {
+          {content &&
+            content.map((content) => {
               return (
                 <Col key={content.id}>
                   <Card content={content} />

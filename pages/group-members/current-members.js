@@ -3,12 +3,12 @@ import Card from '../../components/Card';
 import { Row, Col, Container } from 'react-bootstrap';
 import Seo from '../../components/Seo';
 import { generateClient } from '../../lib/contentfulClient';
-import { transformedImagesForCards } from '../../lib/utils';
+import { transformedContent, sortDescending } from '../../lib/utils';
 
 export default function CurrentMembers({ content = [] }) {
-  const transformedContent = transformedImagesForCards(content);
+  content = transformedContent(content);
   const dict = {};
-  transformedContent.forEach((t) => {
+  sortDescending(content).forEach((t) => {
     if (!dict[t.enrolledProgram]) {
       dict[t.enrolledProgram] = [t];
     } else {

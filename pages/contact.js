@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import Seo from '../components/Seo';
 import Content from '../components/Content';
 import { generateClient } from '../lib/contentfulClient';
+import { transformedContent } from '../lib/utils';
 import emailjs from 'emailjs-com';
 
 export default function Contact({ pageContent = [] }) {
@@ -22,6 +23,8 @@ export default function Contact({ pageContent = [] }) {
     subject: '',
     message: '',
   });
+
+  const content = transformedContent(pageContent);
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
@@ -100,8 +103,8 @@ export default function Contact({ pageContent = [] }) {
         title='Contact'
         description='Contact details of Dr. Rupesh S. Devan'
       />
-      {pageContent.map((content) => (
-        <Content key={content.sys.id} content={content} />
+      {content.map((content) => (
+        <Content key={content.id} content={content} />
       ))}
       <br />
       <h4>Contact</h4>

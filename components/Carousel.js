@@ -1,14 +1,9 @@
 import React from 'react';
 import { Carousel as BootstrapCarousel } from 'react-bootstrap';
 import Image from 'next/image';
+import Richtext from './Richtext';
 
-const Carousel = ({
-  images = [],
-  description,
-  className,
-  imgWidth,
-  imgHeight,
-}) => {
+const Carousel = ({ images = [], details, className, imgWidth, imgHeight }) => {
   return (
     <div className={`d-flex flex-column justify-content-between ${className}`}>
       <BootstrapCarousel fade>
@@ -35,7 +30,9 @@ const Carousel = ({
 
       <br />
       <div className='text-center'>
-        <p>{description}</p>
+        <p>
+          <Richtext text={details} />
+        </p>
       </div>
     </div>
   );

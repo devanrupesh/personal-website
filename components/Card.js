@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card as BootstrapCard, Button } from 'react-bootstrap';
+import { Card as BootstrapCard } from 'react-bootstrap';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
+import Richtext from './Richtext';
 
 const Card = ({ content }) => {
   return (
@@ -15,10 +15,9 @@ const Card = ({ content }) => {
       />
       <BootstrapCard.Body>
         <BootstrapCard.Title>{content.title}</BootstrapCard.Title>
-        <BootstrapCard.Text>
-          <ReactMarkdown>{content.description}</ReactMarkdown>
+        <BootstrapCard.Text as='div'>
+          <Richtext text={content.details} />
         </BootstrapCard.Text>
-        {/* <Button variant='primary'>Go somewhere</Button> */}
       </BootstrapCard.Body>
     </BootstrapCard>
   );

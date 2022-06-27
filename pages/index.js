@@ -1,11 +1,12 @@
 import Carousel from '../components/Carousel';
 import { generateClient } from '../lib/contentfulClient';
-import { transformedImagesForCarousel } from '../lib/utils';
+import { transformedImagesForCarousel, transformedContent } from '../lib/utils';
 import { transformedImagesForCarousel as transformedImagesForHome } from '../lib/utils';
 import Content from '../components/Content';
 import Seo from '../components/Seo';
 import { Image, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import Richtext from '../components/Richtext';
 
 export default function Home({
   pageContent = [],
@@ -15,20 +16,20 @@ export default function Home({
   const router = useRouter();
   const transformedImages = transformedImagesForCarousel(featureImagesContent);
   const profile = transformedImagesForHome(profileImageContent)[0];
-
+  const content = transformedContent(pageContent);
   return (
     <>
       <Seo title='Home' description='Home page for Dr Rupesh S. Dewan' />
-      <div className='d-md-flex p-sm-2 justify-content-between align-items-center flex-column-sm'>
+      <div className='d-lg-flex p-sm-2 justify-content-between align-items-center flex-column-xs'>
         <Carousel
           images={transformedImages}
-          description={featureImagesContent.fields.description}
+          details={featureImagesContent.fields.details}
           imgWidth='600'
           imgHeight='350'
         />
         <div
-          className='card border-dark mb-3 d-flex flex-column justify-content-center text-center w-120 h-50'
-          // style={{ maxWidth: '18rem' }}
+          className='card border-dark mb-3 d-flex flex-column justify-content-center text-center w-100 h-50'
+          // style={{ maxWidth: '100vw' }}
         >
           <div className='card-header'>
             <Image
@@ -40,10 +41,7 @@ export default function Home({
             />
           </div>
           <div className='card-body text-dark'>
-            <h5 className='card-title'>Dr. Rupesh S. Devan</h5>
-            <h6 className='card-title'>Nano Architectures Research Group</h6>
-            <hr />
-            <p className='card-text'>Indian Institue of Technology Indore</p>
+            <Richtext text={profileImageContent.fields.details} />
             <Button onClick={() => router.push('/group-leader/profile')}>
               view profile
             </Button>
@@ -51,8 +49,8 @@ export default function Home({
         </div>
       </div>
 
-      {pageContent.map((content) => (
-        <Content key={content.sys.id} content={content} />
+      {content.map((content) => (
+        <Content key={content.id} content={content} />
       ))}
     </>
   );
@@ -62,13 +60,13 @@ export const getStaticProps = async () => {
   const client = generateClient();
   const entries = await client.getEntries({ content_type: 'home' });
   const featureImagesEntry = await client.getEntry('2biFVyGWXKtSn3lLg8ZXxZ');
-  const profileImageContent = await client.getEntry('6GNjPYdFHFQwlHixje7kbo');
+  const profileImageEntry = await client.getEntry('6GNjPYdFHFQwlHixje7kbo');
 
   return {
     props: {
       pageContent: entries.items,
       featureImagesContent: featureImagesEntry,
-      profileImageContent,
+      profileImageContent: profileImageEntry,
     },
     revalidate: 1,
   };

@@ -4,10 +4,10 @@ import Richtext from './Richtext';
 const Content = ({ content, html }) => {
   return (
     <div>
-      <h4>{content.fields.title}</h4>
+      <h4>{content.title}</h4>
       {html && html}
       <hr />
-      <Richtext text={content.fields.details} />
+      <Richtext text={content.details} />
     </div>
   );
 };

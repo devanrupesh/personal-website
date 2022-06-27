@@ -1,13 +1,17 @@
 import { generateClient } from '../../lib/contentfulClient';
 import Content from '../../components/Content';
 import Seo from '../../components/Seo';
+import { transformedContent, sortDescending } from '../../lib/utils';
 
 export default function Profile({ pageContent = [] }) {
+  const content = sortDescending(transformedContent(pageContent));
+  console.log(content);
+
   return (
     <>
       <Seo title='Profile' description='Profile of Dr. Rupesh S. Devan' />
-      {pageContent.map((content) => (
-        <Content key={content.sys.id} content={content} />
+      {content.map((content) => (
+        <Content key={content.id} content={content} />
       ))}
     </>
   );

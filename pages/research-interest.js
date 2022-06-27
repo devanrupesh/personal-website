@@ -1,6 +1,6 @@
 import Carousel from '../components/Carousel';
 import { generateClient } from '../lib/contentfulClient';
-import { transformedImagesForCarousel } from '../lib/utils';
+import { transformedImagesForCarousel, transformedContent } from '../lib/utils';
 import Content from '../components/Content';
 import Seo from '../components/Seo';
 
@@ -9,18 +9,18 @@ export default function ResearchInterest({
   featureImagesContent = {},
 }) {
   const transformedImages = transformedImagesForCarousel(featureImagesContent);
-
+  const content = transformedContent(pageContent);
   return (
     <>
       <Seo title='Research Interest' description='Research Interests' />
       <Carousel
         images={transformedImages}
-        description={featureImagesContent.fields.description}
+        details={featureImagesContent.fields.details}
         imgWidth='800'
         imgHeight='500'
       />
-      {pageContent.map((content) => (
-        <Content key={content.sys.id} content={content} />
+      {content.map((content) => (
+        <Content key={content.id} content={content} />
       ))}
     </>
   );

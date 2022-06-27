@@ -3,6 +3,7 @@ import { generateClient } from '../../lib/contentfulClient';
 import Content from '../../components/Content';
 import Seo from '../../components/Seo';
 import { Button } from 'react-bootstrap';
+import { transformedContent } from '../../lib/utils';
 
 export default function Journals({ pageContent = [] }) {
   const [oldestFirst, setOldestFirst] = useState(false);
@@ -10,6 +11,8 @@ export default function Journals({ pageContent = [] }) {
     e.preventDefault();
     setOldestFirst((prevValue) => !prevValue);
   };
+
+  const content = transformedContent(pageContent);
 
   const dropDownHtml = (
     <div>
@@ -26,24 +29,20 @@ export default function Journals({ pageContent = [] }) {
         title='Journals'
         description='Journals published by Dr. Rupesh S. Devan'
       />
-      {pageContent.map((content) => {
-        if (content.fields.title === 'Journals') {
-          content.fields.details.content.forEach((el) => {
+      {content.map((content) => {
+        if (content.title === 'Journals') {
+          content.details.content.forEach((el) => {
             if (el.nodeType === 'ordered-list') {
               el.content = el.content.reverse();
             }
           });
 
           return (
-            <Content
-              key={content.sys.id}
-              content={content}
-              html={dropDownHtml}
-            />
+            <Content key={content.id} content={content} html={dropDownHtml} />
           );
         }
 
-        return <Content key={content.sys.id} content={content} />;
+        return <Content key={content.id} content={content} />;
       })}
     </>
   );
