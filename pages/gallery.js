@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomGallery from '../components/Gallery';
+import NoContent from '../components/NoContent';
 import Seo from '../components/Seo';
 import { generateClient } from '../lib/contentfulClient';
 
@@ -16,7 +17,11 @@ export default function Gallery({ galleryContent = [] }) {
   return (
     <>
       <Seo title='Gallery' description='Gallery of Dr. Rupesh S. Devan' />
-      <CustomGallery photos={formatedImages} />
+      {formatedImages.length !== 0 ? (
+        <CustomGallery photos={formatedImages} />
+      ) : (
+        <NoContent />
+      )}
     </>
   );
 }

@@ -2,6 +2,7 @@ import { generateClient } from '../../lib/contentfulClient';
 import Content from '../../components/Content';
 import Seo from '../../components/Seo';
 import { transformedContent } from '../../lib/utils';
+import NoContent from '../../components/NoContent';
 
 export default function PgUgInterns({ pageContent = [] }) {
   const content = transformedContent(pageContent);
@@ -11,9 +12,11 @@ export default function PgUgInterns({ pageContent = [] }) {
         title='Pg/Ug Interns'
         description='Postgraduate Undergraduate Interns working/worked under Dr. Rupesh S. Devan'
       />
-      {content.map((content) => (
-        <Content key={content.id} content={content} />
-      ))}
+      {content.length !== 0 ? (
+        content.map((content) => <Content key={content.id} content={content} />)
+      ) : (
+        <NoContent />
+      )}
     </>
   );
 }

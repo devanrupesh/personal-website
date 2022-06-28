@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Seo from '../../components/Seo';
 import { generateClient } from '../../lib/contentfulClient';
 import { transformedContent, sortDescending } from '../../lib/utils';
+import NoContent from '../../components/NoContent';
 
 export default function Alumni({ content = [] }) {
   content = transformedContent(content);
@@ -17,13 +18,11 @@ export default function Alumni({ content = [] }) {
     }
   });
 
-  console.log(dict);
-
   return (
     <>
       <Seo title='Alumni' description='Alumni under Dr. Rupesh S. Devan' />
       <div>
-        {Object.keys(dict) &&
+        {Object.keys(dict).length !== 0 ? (
           Object.keys(dict).map((k) => {
             return (
               <Container key={k} className='my-3'>
@@ -38,7 +37,10 @@ export default function Alumni({ content = [] }) {
                 </Row>
               </Container>
             );
-          })}
+          })
+        ) : (
+          <NoContent />
+        )}
       </div>
     </>
   );

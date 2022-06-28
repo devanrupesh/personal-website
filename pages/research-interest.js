@@ -3,6 +3,7 @@ import { generateClient } from '../lib/contentfulClient';
 import { transformedImagesForCarousel, transformedContent } from '../lib/utils';
 import Content from '../components/Content';
 import Seo from '../components/Seo';
+import NoContent from '../components/NoContent';
 
 export default function ResearchInterest({
   pageContent = [],
@@ -19,9 +20,11 @@ export default function ResearchInterest({
         imgWidth='800'
         imgHeight='500'
       />
-      {content.map((content) => (
-        <Content key={content.id} content={content} />
-      ))}
+      {content.length !== 0 ? (
+        content.map((content) => <Content key={content.id} content={content} />)
+      ) : (
+        <NoContent />
+      )}
     </>
   );
 }

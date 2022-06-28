@@ -7,6 +7,7 @@ import Seo from '../components/Seo';
 import { Image, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import Richtext from '../components/Richtext';
+import NoContent from '../components/NoContent';
 
 export default function Home({
   pageContent = [],
@@ -49,9 +50,11 @@ export default function Home({
         </div>
       </div>
 
-      {content.map((content) => (
-        <Content key={content.id} content={content} />
-      ))}
+      {content.length !== 0 ? (
+        content.map((content) => <Content key={content.id} content={content} />)
+      ) : (
+        <NoContent />
+      )}
     </>
   );
 }

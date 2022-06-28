@@ -6,6 +6,7 @@ import {
   transformedImagesForCarousel,
   transformedContent,
 } from '../../lib/utils';
+import NoContent from '../../components/NoContent';
 
 export default function LatestResearch({
   pageContent = [],
@@ -26,9 +27,11 @@ export default function LatestResearch({
         imgWidth='800'
         imgHeight='500'
       />
-      {content.map((content) => (
-        <Content key={content.id} content={content} />
-      ))}
+      {content.length !== 0 ? (
+        content.map((content) => <Content key={content.id} content={content} />)
+      ) : (
+        <NoContent />
+      )}
     </>
   );
 }

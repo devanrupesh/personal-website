@@ -4,6 +4,7 @@ import Content from '../../components/Content';
 import Seo from '../../components/Seo';
 import { Button } from 'react-bootstrap';
 import { transformedContent } from '../../lib/utils';
+import NoContent from '../../components/NoContent';
 
 export default function Journals({ pageContent = [] }) {
   const [oldestFirst, setOldestFirst] = useState(false);
@@ -29,21 +30,25 @@ export default function Journals({ pageContent = [] }) {
         title='Journals'
         description='Journals published by Dr. Rupesh S. Devan'
       />
-      {content.map((content) => {
-        if (content.title === 'Journals') {
-          content.details.content.forEach((el) => {
-            if (el.nodeType === 'ordered-list') {
-              el.content = el.content.reverse();
-            }
-          });
+      {content.length !== 0 ? (
+        content.map((content) => {
+          if (content.title === 'Journals') {
+            content.details.content.forEach((el) => {
+              if (el.nodeType === 'ordered-list') {
+                el.content = el.content.reverse();
+              }
+            });
 
-          return (
-            <Content key={content.id} content={content} html={dropDownHtml} />
-          );
-        }
+            return (
+              <Content key={content.id} content={content} html={dropDownHtml} />
+            );
+          }
 
-        return <Content key={content.id} content={content} />;
-      })}
+          return <Content key={content.id} content={content} />;
+        })
+      ) : (
+        <NoContent />
+      )}
     </>
   );
 }

@@ -8,6 +8,7 @@ import Content from '../components/Content';
 import { generateClient } from '../lib/contentfulClient';
 import { transformedContent } from '../lib/utils';
 import emailjs from 'emailjs-com';
+import NoContent from '../components/NoContent';
 
 export default function Contact({ pageContent = [] }) {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -41,7 +42,6 @@ export default function Contact({ pageContent = [] }) {
       .then(
         (result) => {
           setShowSpinner(false);
-          // console.log(result.text);
           setShowAlert({
             show: true,
             message:
@@ -103,9 +103,11 @@ export default function Contact({ pageContent = [] }) {
         title='Contact'
         description='Contact details of Dr. Rupesh S. Devan'
       />
-      {content.map((content) => (
-        <Content key={content.id} content={content} />
-      ))}
+      {content.length !== 0 ? (
+        content.map((content) => <Content key={content.id} content={content} />)
+      ) : (
+        <NoContent />
+      )}
       <br />
       <h4>Contact</h4>
       <br />
