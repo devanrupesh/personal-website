@@ -6,7 +6,6 @@ import NoContent from '../../components/NoContent';
 
 export default function Profile({ pageContent = [] }) {
   const content = sortDescending(transformedContent(pageContent));
-  console.log(content);
 
   return (
     <>
